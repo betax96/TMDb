@@ -7,5 +7,10 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @GET("/3/movie/popular?")
-    Call<MoviesByPopularity> getMoviesByPopularity(@Query("language") String language, @Query("page") String page);
+    Call<Movies> getMoviesByPopularity(@Query("language") String language, @Query("page") String page);
+
+    @GET("/3/search/movie?")
+    Call<Movies> searchMovies(@Query("query") String query, @Query("page") String page);
+
+
 }
