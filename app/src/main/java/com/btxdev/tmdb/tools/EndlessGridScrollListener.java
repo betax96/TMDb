@@ -10,8 +10,7 @@ public abstract class EndlessGridScrollListener extends RecyclerView.OnScrollLis
 
     @Override
     public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-        if(dy > 0){ // only when scrolling up
-
+        if(dy > 0){
             final int visibleThreshold = 1;
             GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
 
@@ -24,6 +23,5 @@ public abstract class EndlessGridScrollListener extends RecyclerView.OnScrollLis
         }
     }
 
-    // Defines the process for actually loading more data based on page
     public abstract void onLoadMore(int totalItemsCount, RecyclerView view);
 }

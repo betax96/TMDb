@@ -31,4 +31,11 @@ public class Util {
         params.height = (int) hPixels;
         view.setLayoutParams(params);
     }
+
+    public static void setViewSizePx(View view, int width, int height){
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        view.setLayoutParams(params);
+    }
 }

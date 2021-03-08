@@ -21,7 +21,7 @@ public class MoviesInteractorImpl implements MoviesInteractor{
     }
 
     @Override
-    public void requestMovies(int page) {
+    public void getMovies(int page) {
         String pageString = Integer.toString(page);
         Call<Movies> call = apiInterface.getMoviesByPopularity("en-US",pageString);
         moviesPresenter.showLoading();

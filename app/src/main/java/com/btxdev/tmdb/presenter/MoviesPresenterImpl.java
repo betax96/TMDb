@@ -48,8 +48,8 @@ public class MoviesPresenterImpl implements MoviesPresenter{
     }
 
     @Override
-    public void requestMovies(int page) {
-        moviesInteractor.requestMovies(page);
+    public void getMovies(int page) {
+        moviesInteractor.getMovies(page);
     }
 
     @Override
