@@ -1,0 +1,15 @@
+<resources>
+    <string name="arg_movie" translatable="false">arg_movie</string>
+    <string name="TMDb_api_key" translatable="false">b7993f2c6ebcaed5a6882a8c80f16de6</string>
+    <string name="TMDb_api_access_token" translatable="false">eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNzk5M2YyYzZlYmNhZWQ1YTY4ODJhOGM4MGYxNmRlNiIsInN1YiI6IjYwNDJhNzQ2OTljOTY0MDA2ZWY4NWRhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BxrDZ-XqEI5pkjm5qO8mFcnuo7aq5o0kbIy8xj7_lRI</string>
+
+
+    <string name="app_name">TMDb</string>
+    <string name="Movies">Movies</string>
+    <string name="search">Search</string>
+    <string name="summary">Summary</string>
+    <string name="popularity_score">Popularity score</string>
+    <string name="release_date">Release date</string>
+    <string name="no_data_available">No data available</string>
+    <string name="genre">Genre</string>
+</resources>
