@@ -1,5 +1,7 @@
 package com.btxdev.tmdb.interactor;
 
+import com.btxdev.tmdb.App;
+import com.btxdev.tmdb.R;
 import com.btxdev.tmdb.api.ApiClient;
 import com.btxdev.tmdb.api.ApiInterface;
 import com.btxdev.tmdb.api.Movies;
@@ -29,10 +31,10 @@ public class MoviesInteractorImpl implements MoviesInteractor{
             @Override
             public void onResponse(@NotNull Call<Movies> call, @NotNull Response<Movies> response) {
                 if(response.body()==null){
-                    moviesPresenter.showError(new Exception("Response body is null"));
+                    moviesPresenter.showError(new Exception(App.getInstance().getString(R.string.empty_response_received)));
                 }else{
                     if(response.body().results==null||response.body().results.size()==0){
-                        moviesPresenter.showMessage("No more results");
+                        moviesPresenter.showMessage(App.getInstance().getString(R.string.no_more_results));
                     }else{
                         moviesPresenter.showMovies(response.body().results);
                     }
@@ -43,7 +45,7 @@ public class MoviesInteractorImpl implements MoviesInteractor{
 
             @Override
             public void onFailure(@NotNull Call<Movies> call, @NotNull Throwable t) {
-                moviesPresenter.showError(new Exception(t));
+                moviesPresenter.showError(new Exception(App.getInstance().getString(R.string.cannot_connect_to_the_server)));
                 moviesPresenter.showLoadingFinish();
             }
         });
@@ -58,10 +60,10 @@ public class MoviesInteractorImpl implements MoviesInteractor{
             @Override
             public void onResponse(@NotNull Call<Movies> call, @NotNull Response<Movies> response) {
                 if(response.body()==null){
-                    moviesPresenter.showError(new Exception("Response body is null"));
+                    moviesPresenter.showError(new Exception(App.getInstance().getString(R.string.empty_response_received)));
                 }else{
                     if(response.body().results==null||response.body().results.size()==0){
-                        moviesPresenter.showMessage("No more results");
+                        moviesPresenter.showMessage(App.getInstance().getString(R.string.no_more_results));
                     }else{
                         moviesPresenter.showSearchResults(response.body().results);
                     }
@@ -72,7 +74,7 @@ public class MoviesInteractorImpl implements MoviesInteractor{
 
             @Override
             public void onFailure(@NotNull Call<Movies> call, @NotNull Throwable t) {
-                moviesPresenter.showError(new Exception(t));
+                moviesPresenter.showError(new Exception(App.getInstance().getString(R.string.cannot_connect_to_the_server)));
                 moviesPresenter.showLoadingFinish();
             }
         });

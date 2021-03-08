@@ -1,6 +1,5 @@
 package com.btxdev.tmdb.view;
 
-import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -9,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.widget.TooltipCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -19,10 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -172,7 +168,9 @@ public class MoviesFragment extends Fragment implements MoviesView{
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                viewModel.getMoviesList().clear();
+                if(viewModel.getMoviesList()!=null){
+                    viewModel.getMoviesList().clear();
+                }
                 adapterMovie.notifyDataSetChanged();
                 if (searchView.isIconified()) {
                     viewModel.setCurrentPage(1);

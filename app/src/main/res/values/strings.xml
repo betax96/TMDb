@@ -5,11 +5,14 @@
 
 
     <string name="app_name">TMDb</string>
-    <string name="Movies">Movies</string>
+    <string name="movies">Movies</string>
     <string name="search">Search</string>
     <string name="summary">Summary</string>
     <string name="popularity_score">Popularity score</string>
     <string name="release_date">Release date</string>
     <string name="no_data_available">No data available</string>
+    <string name="cannot_connect_to_the_server">Cannot connect to the server</string>
+    <string name="empty_response_received">Empty response received</string>
     <string name="genre">Genre</string>
+    <string name="no_more_results">No more results</string>
 </resources>

@@ -42,7 +42,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.3.3"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.3"
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.3"
-    //implementation "androidx.navigation:navigation-compose:1.0.0-alpha08"
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"

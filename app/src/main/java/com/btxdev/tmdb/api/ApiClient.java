@@ -15,7 +15,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {
 
@@ -40,13 +39,11 @@ public class ApiClient {
                 .connectTimeout(5, TimeUnit.SECONDS).readTimeout(5, TimeUnit.SECONDS).build();
 
 
-        retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-
-        return retrofit;
     }
 
 }
