@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -12,12 +13,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -32,7 +31,6 @@ import com.btxdev.tmdb.viewmodel.MovieDetailsViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,7 +80,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView {
     private Toolbar toolbar;
     private MovieDetailsViewModel viewModel;
     private ImageView imgBackdrop;
-    private ScrollView scrollViewBackdrop;
+    private NestedScrollView scrollViewBackdrop;
     private TextView txtSummary, txtReleaseDate, txtPopularityScore, txtGenre;
     private MovieDetailsPresenter presenter;
 
@@ -115,6 +113,8 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView {
             presenter.getMovieDetails(viewModel.getMovie());
             if(viewModel.getGenres()!=null){
                 showMovieGenreDetails(viewModel.getGenres());
+            }else{
+                presenter.getGenreDetails(viewModel.getMovie());
             }
         }else{
             if(args!=null){
@@ -142,7 +142,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView {
         if(!popularityScore.isEmpty()){
             txtPopularityScore.setText(popularityScore);
         }
-        
+
         txtGenre.setText("...");
 
         Picasso.with(getContext()).load(pictureUrl)

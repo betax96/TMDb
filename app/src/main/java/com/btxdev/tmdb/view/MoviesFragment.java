@@ -1,5 +1,6 @@
 package com.btxdev.tmdb.view;
 
+import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.TooltipCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -20,6 +22,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -99,7 +102,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
 
         moviesPresenter = new MoviesPresenterImpl(this);
 
-
         Point screenSizePx = Util.getScreenSizePx(getContext());
 
 
@@ -124,9 +126,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
             @Override
             public void onBindViewHolder(@NonNull MovieViewHolder viewHolder, int i) {
                 Movie movie = viewModel.getMoviesList().get(i);
-
-                //  TooltipCompat.setTooltipText(viewHolder.imgMovie, movie.title);
-
                 Picasso.with(getContext()).load("https://image.tmdb.org/t/p/w200"+movie.posterPath)
                         .placeholder(R.drawable.movie_poster_placeholder).into(viewHolder.imgMovie);
 
@@ -138,8 +137,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
                         Navigation.findNavController(view).navigate(R.id.action_moviesFragment_to_movieDetailsFragment, bundle);
                     }
                 });
-
-                // viewHolder.cardView.setTooltipText();
 
             }
 
@@ -154,8 +151,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
 
             }
         });
-
-
 
         adapterMovie.setOnGrid(recMovies,gridSpan);
 
@@ -207,7 +202,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
         };
 
         requireActivity().getOnBackPressedDispatcher().addCallback(searchOnBackPressedCallback);
-
 
         NavController navController = Navigation.findNavController(view);
         AppBarConfiguration appBarConfiguration =
@@ -262,14 +256,6 @@ public class MoviesFragment extends Fragment implements MoviesView{
         if(viewModel.getMoviesList()==null) {
             moviesPresenter.getMovies(viewModel.getCurrentPage());
         }
-
-        Log.e("oncreate", "asdasdasd");
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        Log.e("hidden", "asdasdasd");
     }
 
     @Override
@@ -278,14 +264,12 @@ public class MoviesFragment extends Fragment implements MoviesView{
         if(!searchView.isIconified()){
             searchOnBackPressedCallback.setEnabled(true);
         }
-        Log.e("resume", "asdasdas");
     }
 
     @Override
     public void onPause() {
         super.onPause();
         searchOnBackPressedCallback.setEnabled(false);
-        Log.e("pause", "asdasdas");
     }
 
     @Override
@@ -305,7 +289,7 @@ public class MoviesFragment extends Fragment implements MoviesView{
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(getContext(),message ,Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),message ,Toast.LENGTH_SHORT).show();
     }
 
     @Override
