@@ -134,7 +134,7 @@ public class MoviesFragment extends Fragment implements MoviesView{
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putParcelable("movie", movie);
+                        bundle.putParcelable(getString(R.string.arg_movie), movie);
                         Navigation.findNavController(view).navigate(R.id.action_moviesFragment_to_movieDetailsFragment, bundle);
                     }
                 });
@@ -165,7 +165,7 @@ public class MoviesFragment extends Fragment implements MoviesView{
                 if (searchView.isIconified()) {
                     viewModel.setCurrentPage(viewModel.getNextPage());
                     viewModel.setNextPage(viewModel.getNextPage()+1);
-                    moviesPresenter.requestMovies(viewModel.getCurrentPage());
+                    moviesPresenter.getMovies(viewModel.getCurrentPage());
                 } else {
                     viewModel.setCurrentPageSearch(viewModel.getNextPageSearch());
                     viewModel.setNextPageSearch(viewModel.getNextPageSearch()+1);
@@ -182,7 +182,7 @@ public class MoviesFragment extends Fragment implements MoviesView{
                 if (searchView.isIconified()) {
                     viewModel.setCurrentPage(1);
                     viewModel.setNextPage(2);
-                    moviesPresenter.requestMovies(viewModel.getCurrentPage());
+                    moviesPresenter.getMovies(viewModel.getCurrentPage());
                 } else {
                     viewModel.setCurrentPageSearch(1);
                     viewModel.setNextPageSearch(2);
@@ -260,7 +260,7 @@ public class MoviesFragment extends Fragment implements MoviesView{
         });
 
         if(viewModel.getMoviesList()==null) {
-            moviesPresenter.requestMovies(viewModel.getCurrentPage());
+            moviesPresenter.getMovies(viewModel.getCurrentPage());
         }
 
         Log.e("oncreate", "asdasdasd");

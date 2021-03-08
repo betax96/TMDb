@@ -11,6 +11,6 @@ public interface MoviesPresenter {
     void showLoadingFinish();
     void showMessage(String message);
     void showSearchResults(List<Movie> movies);
-    void requestMovies(int page);
+    void getMovies(int page);
     void searchMovies(String query, int page);
 }

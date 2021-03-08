@@ -13,18 +13,10 @@
         <action
             android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
-        <action
-            android:id="@+id/action_moviesFragment_to_movieSearchFragment"
-            app:destination="@id/movieSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.btxdev.tmdb.view.MovieDetailsFragment"
-        android:label="fragment_movie_details"
+        android:label="..."
         tools:layout="@layout/fragment_movie_details" />
-    <fragment
-        android:id="@+id/movieSearchFragment"
-        android:name="com.btxdev.tmdb.MovieSearchFragment"
-        android:label="fragment_movie_search"
-        tools:layout="@layout/fragment_movie_search" />
 </navigation>

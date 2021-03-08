@@ -12,5 +12,8 @@ public interface ApiInterface {
     @GET("/3/search/movie?")
     Call<Movies> searchMovies(@Query("query") String query, @Query("page") String page);
 
+    @GET("3/genre/movie/list")
+    Call<Genres> getMovieGenreList();
+
 
 }
